@@ -30,19 +30,31 @@
 
 				<div id="navbarContent" class="collapse navbar-collapse">
 
+					<?php
+					function active($current_page) {
+						  
+						$url_array =  explode('/', $_SERVER['REQUEST_URI']); // cherche l'URI et sa sépare en parties
+						$url = end($url_array); // récupère la dernière partie seulement de l'URI
+
+						if($current_page == $url) {
+
+						    echo 'active'; // ajoute la classe html "active" si le paramètre URI du <li> match l'url actuelle
+						  } 
+					}?>
+
 					<ul class="navbar-nav ml-auto"> <!-- ml/mr/mx-auto pour centrer la nav -->
 
-						<li class="nav-item active"><a class="nav-link" href="index.php">ACCUEIL</a></li>
+						<li class="nav-item <?php active('index.php');?>"><a class="nav-link" href="index.php">ACCUEIL</a></li>
 						
 
-						<li class="nav-item"><a class="nav-link" href="la-team.php">LA TEAM</a></li>
+						<li class="nav-item <?php active('la-team.php');?>"><a class="nav-link" href="la-team.php">LA TEAM</a></li>
 						
 
-						<li class="nav-item"><a class="nav-link" href="enseignement.php">ENSEIGNEMENT</a></li>
+						<li class="nav-item <?php active('enseignement.php');?>"><a class="nav-link" href="enseignement.php">ENSEIGNEMENT</a></li>
 						
 
 						<!-- la partie dropdown contenant les pages Planning et Tarifs -->
-						<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="..." id="navbarDropDownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >LES COURS</a>
+						<li class="nav-item dropdown <?php active('planning.php'); active('tarifs.php');?>"><a class="nav-link dropdown-toggle" href="..." id="navbarDropDownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >LES COURS</a>
 
 							<div class="dropdown-menu" aria-labelledby="navbarDropDownMenuLink">
 								<a href="planning.php" class="dropdown-item">PLANNING</a>
@@ -51,7 +63,7 @@
 						</li>
 						
 
-						<li class="nav-item"><a class="nav-link" href="contact.php">CONTACT</a></li>
+						<li class="nav-item <?php active('contact.php');?>"><a class="nav-link" href="contact.php">CONTACT</a></li>
 						
 
 					</ul>
